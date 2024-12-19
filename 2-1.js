@@ -1,10 +1,12 @@
 const fs = require('fs');
 
-const text = fs.readFileSync('./2-2-input.txt').toString().split('\r\n');
+const text = fs.readFileSync('./2-1-input.txt').toString().split('\r\n');
 
 var output = [];
 
 var result = 0;
+
+var count = 0;
 
 for(let i=0;i<text.length;i++){
     numberList = text[i].split(' ')
@@ -17,19 +19,24 @@ for(let i=0;i<text.length;i++){
             type = 'Decrescente';
         }
         if(numberList[j]-numberList[j+1] == 0){
-            state = 'Unsafe'
+            state = 'Unsafe';
+            count++;
         }
         if(type == 'Crescente' && numberList[j]-numberList[j+1] > 0){
-            state = 'Unsafe'
+            state = 'Unsafe';
+            count++;
         }
         if(type == 'Decrescente' && numberList[j]-numberList[j+1] < 0){
-            state = 'Unsafe'
+            state = 'Unsafe';
+            count++;
         }
         if(type == 'Crescente' && numberList[j]-numberList[j+1] < -3){
-            state = 'Unsafe'
+            state = 'Unsafe';
+            count++;
         }
         if(type == 'Decrescente' && numberList[j]-numberList[j+1] > 3){
-            state = 'Unsafe'
+            state = 'Unsafe';
+            count++;
         }
 
     }
